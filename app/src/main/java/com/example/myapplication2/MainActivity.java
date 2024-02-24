@@ -26,9 +26,16 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-//        setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.register_button);
         Log.i(tag, "starting main activity");
+        Bundle arguments = getIntent().getExtras();
+        if (arguments != null) {
+            String login = arguments.getString("login");
+            // Устанавливаем текст в EditText с помощью ViewBinding
+            binding.loginEditText.setText(login); // Устанавливаем текст
+        } else {
+            Log.e(tag, "No login information received");
+        }
+        Button button = findViewById(R.id.register_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
