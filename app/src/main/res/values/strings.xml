@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application 2</string>
+    <string name="enter_login">Enter login</string>
+    <string name="enter_password">Enter password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="register">Register</string>
+</resources>
