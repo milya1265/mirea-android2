@@ -1,5 +1,6 @@
 package com.example.myapplication2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,15 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
         Log.i(tag, "starting second activity");
 
 
-        binding.registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String login = binding.loginEditText.getText().toString();
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                intent.putExtra("login", login);
-                finish();
-                startActivity(intent);
-            }
+        binding.registerText.setOnClickListener(view -> {
+            Intent result = new Intent();
+            String resultValue = binding.loginEditText.getText().toString();
+            result.putExtra("result_key", resultValue);
+            setResult(Activity.RESULT_OK, result);
+            finish();
         });
+
+
     }
 }

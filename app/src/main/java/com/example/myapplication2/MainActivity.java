@@ -1,5 +1,9 @@
 package com.example.myapplication2;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,12 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication2.databinding.ActivityMainBinding;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String tag = "GINGER";
     private ActivityMainBinding binding; // Объект для доступа к представлениям
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.e(tag, "No login information received");
         }
-        Button button = findViewById(R.id.register_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button loginButton = findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(tag, "Click button login");
@@ -44,15 +46,14 @@ public class MainActivity extends AppCompatActivity {
                         (binding.passwordEditText.getText().toString().equals("pupu"))){
                     Toast.makeText(getApplicationContext(), "you'r logged in", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, AfterRegister.class);
-                    finish();
                     startActivity(intent);
                 }
                 binding.loginEditText.setText("");
                 binding.passwordEditText.setText("");
             }
         });
-
         TextView register = findViewById(R.id.register_text);
+        binding.registerText.setText(R.string.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,9 +62,19 @@ public class MainActivity extends AppCompatActivity {
                 String login = editText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 intent.putExtra("login", login);
-                finish();
-                startActivity(intent);
+                launcher.launch(intent);
             }
         });
     }
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent data = result.getData();
+                    if (data == null) return;
+                    binding.loginEditText.setText(data.getStringExtra("result_key"));
+                }
+            }
+    );
 }
