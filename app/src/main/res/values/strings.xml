@@ -4,4 +4,5 @@
     <string name="enter_password">Enter password</string>
     <string name="repeat_password">Repeat password</string>
     <string name="register">Register</string>
+    <string name="request_key">qwerty</string>
 </resources>

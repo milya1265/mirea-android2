@@ -22,31 +22,33 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot()); // Установка макета
-
-        Bundle arguments = getIntent().getExtras();
-        if (arguments != null) {
-            String login = arguments.getString("login");
-            // Устанавливаем текст в EditText с помощью ViewBinding
-            binding.loginEditText.setText(login); // Устанавливаем текст
-        } else {
-            Log.e(tag, "No login information received");
-        }
-
-        binding.loginEditText.setHint("Enter login");
-
-        Log.i(tag, "starting second activity");
-
-
-        binding.registerText.setOnClickListener(view -> {
-            Intent result = new Intent();
-            String resultValue = binding.loginEditText.getText().toString();
-            result.putExtra("result_key", resultValue);
-            setResult(Activity.RESULT_OK, result);
-            finish();
-        });
-
+//        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot()); // Установка макета
+//
+//
+//
+//        Bundle arguments = getIntent().getExtras();
+//        if (arguments != null) {
+//            String login = arguments.getString("login");
+//            // Устанавливаем текст в EditText с помощью ViewBinding
+//            binding.loginEditText.setText(login); // Устанавливаем текст
+//        } else {
+//            Log.e(tag, "No login information received");
+//        }
+//
+//        binding.loginEditText.setHint("Enter login");
+//
+//        Log.i(tag, "starting second activity");
+//
+//
+//        binding.registerButton.setOnClickListener(view -> {
+//            Intent result = new Intent();
+//            String resultValue = binding.loginEditText.getText().toString();
+//            result.putExtra("result_key", resultValue);
+//            setResult(Activity.RESULT_OK, result);
+//            finish();
+//        });
+//
 
     }
 }
