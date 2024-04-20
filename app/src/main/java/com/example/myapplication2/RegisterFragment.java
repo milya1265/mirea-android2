@@ -34,7 +34,7 @@ public class RegisterFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("toReg",
                 this, (requestKey, result) -> {
                     Log.d(TAG, "принимаем текст от фрагмента логина");
-                    String login = result.getString(getString(R.string.request_key));
+                    String login = result.getString(getString(R.string.request_login));
                     if (login.equals("")){
                         Log.e(TAG, "login is empty");
                     } else {
@@ -46,18 +46,20 @@ public class RegisterFragment extends Fragment {
         binding.registerButton.setOnClickListener(view -> {
             if (binding.passwordEditText.getText().toString().equals(binding.passwordRepeatEditText.getText().toString())) {
                 Bundle result = new Bundle();
-                String resultValue = binding.loginEditText.getText().toString();
-                result.putString(getString(R.string.request_key), resultValue);
+                String login = binding.loginEditText.getText().toString();
+                String password = binding.passwordEditText.getText().toString();
+                result.putString(getString(R.string.request_login), login);
+                result.putString(getString(R.string.request_password), password);
                 getParentFragmentManager().setFragmentResult("fromReg", result);
 
                 getParentFragmentManager().beginTransaction()
-                        .replace(R.id.first_container, new FragmentMain())
-                        .addToBackStack(null)  // Добавляем транзакцию в стек возврата
+                        .replace(R.id.first_container, new FragmentAuth())
                         .commit();
             } else {
                 Toast.makeText(requireContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         return binding.getRoot();
     }

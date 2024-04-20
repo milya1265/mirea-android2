@@ -9,12 +9,12 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/first_container"
-        android:name="com.example.myapplication2.FragmentMain"
+        android:name="com.example.myapplication2.AcidPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_auth"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

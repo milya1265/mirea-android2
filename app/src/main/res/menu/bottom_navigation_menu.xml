@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Kits"
+        android:enabled="true"
+        android:icon="@drawable/baseline_adb_24"
+        android:title="Kits" />
+    <item
+        android:id="@+id/Acids"
+        android:enabled="true"
+        android:icon="@drawable/sharp_action_key_24"
+        android:title="Acids" />
+    <item
+        android:id="@+id/Kek"
+        android:enabled="true"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Kek" />
+</menu>

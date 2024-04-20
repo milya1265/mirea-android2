@@ -4,5 +4,37 @@
     <string name="enter_password">Enter password</string>
     <string name="repeat_password">Repeat password</string>
     <string name="register">Register</string>
-    <string name="request_key">qwerty</string>
+    <string name="request_login">logreq</string>
+    <string name="request_password">passreq</string>
+
+    <string name="molecule_name">Аспартат</string>
+    <string name="molecule_short_name">Asp</string>
+
+    <string-array name="acid_full_names">
+        <item>Аргинин</item>
+        <item>Аспартат</item>
+        <item>Глутамат</item>
+        <item>Глицин</item>
+        <item>Гистидин</item>
+        <item>Изолейцин</item>
+        <item>Лизин</item>
+        <item>Метионин</item>
+        <item>Треонин</item>
+        <item>Триптофан</item>
+    </string-array>
+
+    <string-array name="acid_short_names">
+        <item>Arg</item>
+        <item>Asp</item>
+        <item>Glu</item>
+        <item>Gly</item>
+        <item>His</item>
+        <item>Ile</item>
+        <item>Lys</item>
+        <item>Met</item>
+        <item>Thr</item>
+        <item>Trp</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
