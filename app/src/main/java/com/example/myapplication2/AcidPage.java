@@ -63,7 +63,7 @@ public class AcidPage extends Fragment {
         String[] acidNames = getResources().getStringArray(R.array.acid_full_names);
         String[] acidShortName = getResources().getStringArray(R.array.acid_short_names);
 
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 20; j++) {
             for (int i = 0; i < acidNames.length; i++) {
                 acidModels.add(new AcidModel(acidNames[i], acidShortName[i], acidImages[i]));
             }

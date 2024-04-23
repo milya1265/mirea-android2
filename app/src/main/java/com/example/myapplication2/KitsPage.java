@@ -1,5 +1,6 @@
 package com.example.myapplication2;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication2.databinding.FragmentKitsBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -60,24 +63,40 @@ public class KitsPage extends Fragment {
             }
         }
 
-/*        BottomNavigationView bottomNavigationView = binding.bottomNavigation;
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
+        // Вместо ArrayAdapter используйте свой собственный адаптер, например, BaseAdapter или ArrayAdapter с кастомным макетом
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), R.layout.list_kit_raw, catNames) {
+            @NonNull
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.item_1:
-                        // Respond to navigation item 1 click
-                        return true;
-                    case R.id.item_2:
-                        // Respond to navigation item 2 click
-                        return true;
-                    default:
-                        return false;
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = convertView;
+                if (view == null) {
+                    LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    view = inflater.inflate(R.layout.list_kit_raw, null);
                 }
+
+                // Получаем ссылки на ImageView и TextView в макете элемента списка
+                ImageView imageView = view.findViewById(R.id.KitImage);
+                TextView textView = view.findViewById(R.id.KitName);
+
+                // Устанавливаем текст из списка
+                textView.setText(catNames.get(position));
+                imageView.setImageResource(R.drawable.cat_svgrepo_com);
+
+
+                // Устанавливаем изображение для каждого элемента списка (здесь вы можете использовать какой-то механизм, чтобы определить, какое изображение устанавливать для каждого элемента)
+                // Пример: imageView.setImageResource(R.drawable.cat_image);
+                // Здесь cat_image - это имя вашего ресурса изображения
+                // Вы можете использовать какой-то другой механизм для определения изображения в зависимости от позиции элемента списка
+
+                return view;
             }
-        });*/
+        };
+
+        listView.setAdapter(adapter);
+
 // используем адаптер данных
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1, catNames);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1, catNames);
 
         listView.setAdapter(adapter);
 
