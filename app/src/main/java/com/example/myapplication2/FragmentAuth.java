@@ -65,13 +65,10 @@ public class FragmentAuth extends Fragment {
                 return;
             }
             if (password.equals(passwordtext)) {
-//                KitsPage afterRegFragment = new KitsPage();
-//                getParentFragmentManager().beginTransaction()
-//                        .replace(R.id.first_container, afterRegFragment)
-//                        .commit();
-                AcidPage acidPage = new AcidPage();
+
+                KitsPage afterRegFragment = new KitsPage();
                 getParentFragmentManager().beginTransaction()
-                        .replace(R.id.first_container, acidPage)
+                        .replace(R.id.first_container, afterRegFragment)
                         .commit();
             }
         });

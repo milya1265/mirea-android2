@@ -35,7 +35,14 @@ public class KitsPage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentKitsBinding.inflate(inflater, container, false);
-        Log.i(TAG, "after register fragment start");
+
+        MainActivity activity = (MainActivity) getActivity();
+        BottomNavigationView menuFragment =  activity.findViewById(R.id.bottom_navigation);
+        if (menuFragment != null) {
+            menuFragment.setVisibility(View.VISIBLE);
+        }
+
+        Log.i(TAG, "kits fragment");
 
         ListView listView = binding.listView;
 
